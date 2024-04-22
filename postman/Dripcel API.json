@@ -1,0 +1,288 @@
+{
+  "info": {
+    "name": "Dripcel API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "balance",
+      "item": [
+        {
+          "name": "get",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{BASE_URL}}/balance"
+          }
+        }
+      ]
+    },
+    {
+      "name": "campaigns",
+      "item": [
+        {
+          "name": "all",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{BASE_URL}}/campaigns"
+          }
+        },
+        {
+          "name": "by campaign_id",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{BASE_URL}}/campaigns/[campaign_id]"
+          }
+        }
+      ]
+    },
+    {
+      "name": "contacts",
+      "item": [
+        {
+          "name": "[cell]",
+          "item": [
+            {
+              "name": "by cell",
+              "event": [],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{BASE_URL}}/contacts/[cell]"
+              }
+            },
+            {
+              "name": "optOut",
+              "event": [],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": "{{BASE_URL}}/contacts/[cell]/optOut",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"all\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "name": "tag",
+              "item": [
+                {
+                  "name": "add",
+                  "event": [],
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": "{{BASE_URL}}/contacts/[cell]/tag/add",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"tags\": [\"DNC\"]\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "name": "remove",
+                  "event": [],
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": "{{BASE_URL}}/contacts/[cell]/tag/remove",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"tags\": [\"DNC\"]\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "search",
+          "item": [
+            {
+              "name": "search",
+              "event": [],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": "{{BASE_URL}}/contacts/search",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"find\": {\n    \"updatedAt\": {\n      \"$gte\": \"2024-04-12\"\n    }\n  },\n  \"projection\": {\n    \"cell\": 1\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "deliveries",
+      "item": [
+        {
+          "name": "all",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{BASE_URL}}/deliveries?cell=[cell]"
+          }
+        }
+      ]
+    },
+    {
+      "name": "replies",
+      "item": [
+        {
+          "name": "search",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{BASE_URL}}/replies/search",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Msisdn\": \"[cell]\",\n  \"kind\": \"optOut\",\n  \"Received\": {\n    \"$gte\": \"2024-03-10T00:00:00.000Z\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "sales",
+      "item": [
+        {
+          "name": "create",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{BASE_URL}}/sales",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cell\": \"[cell]\",\n  \"campaign_id\": \"[campaign_id]\",\n  \"saleValue\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "send",
+      "item": [
+        {
+          "name": "sms",
+          "item": [
+            {
+              "name": "single",
+              "event": [],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": "{{BASE_URL}}/send/sms",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": \"Hello\",\n  \"cell\": \"[cell]\",\n  \"skipNonContacts\": false,\n  \"country\" :\"ZA\",\n  \"deliveryMethod\": \"standard\",\n  \"sendOptions\": {\n    \"testMode\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "send-logs",
+      "item": [
+        {
+          "name": "[send_id]",
+          "item": [
+            {
+              "name": "by send_id",
+              "event": [],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{BASE_URL}}/send-logs/[send_id]"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tags",
+      "item": [
+        {
+          "name": "all",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{BASE_URL}}/tags"
+          }
+        },
+        {
+          "name": "by tag_id",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{BASE_URL}}/tags/[tag_id]"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "API_KEY",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}

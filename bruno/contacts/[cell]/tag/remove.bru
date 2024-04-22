@@ -1,0 +1,17 @@
+meta {
+  name: remove
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{BASE_URL}}/contacts/[cell]/tag/remove
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "tags": ["DNC"]
+  }
+}

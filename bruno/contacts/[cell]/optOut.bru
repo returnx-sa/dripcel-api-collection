@@ -1,0 +1,17 @@
+meta {
+  name: optOut
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{BASE_URL}}/contacts/[cell]/optOut
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "all": true
+  }
+}

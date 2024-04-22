@@ -1,0 +1,24 @@
+meta {
+  name: single
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{BASE_URL}}/send/sms
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "content": "Hello",
+    "cell": "[cell]",
+    "skipNonContacts": false,
+    "country" :"ZA",
+    "deliveryMethod": "standard",
+    "sendOptions": {
+      "testMode": true
+    }
+  }
+}

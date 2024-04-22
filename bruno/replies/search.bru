@@ -1,0 +1,21 @@
+meta {
+  name: search
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{BASE_URL}}/replies/search
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "Msisdn": "[cell]",
+    "kind": "optOut",
+    "Received": {
+      "$gte": "2024-03-10T00:00:00.000Z"
+    }
+  }
+}

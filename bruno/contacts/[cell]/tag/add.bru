@@ -1,0 +1,17 @@
+meta {
+  name: add
+  type: http
+  seq: 1
+}
+
+put {
+  url: {{BASE_URL}}/contacts/[cell]/tag/add
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "tags": ["DNC"]
+  }
+}

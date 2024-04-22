@@ -1,0 +1,24 @@
+meta {
+  name: search
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{BASE_URL}}/contacts/search
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "find": {
+      "updatedAt": {
+        "$gte": "2024-04-12"
+      }
+    },
+    "projection": {
+      "cell": 1
+    }
+  }
+}
