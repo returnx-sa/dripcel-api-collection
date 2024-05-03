@@ -1,0 +1,39 @@
+meta {
+  name: update
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{BASE_URL}}/contacts/update
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "find": {
+      "cell": [],
+      "tag_ids": {
+        "$in": [],
+        "$all": []
+      }
+    },
+    "update": {
+      "$addToSet": {
+        "tag_ids": {
+          "$each": []
+        }
+      },
+      "$pull": {
+        "tag_ids": {
+          "$in": []
+        }
+      }
+    }
+  }
+}
+
+docs {
+  Run a MongoDB updateMany request on all contacts that match the `find` query.
+}
